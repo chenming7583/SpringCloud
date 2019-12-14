@@ -61,6 +61,9 @@ management:
     web:
       exposure:
         include: '*'
+  health:  #禁用rabbitmq检查
+    rabbit:
+      enabled: false
 
 #请求和响应GZIP压缩支持
 feign:
@@ -92,3 +95,6 @@ logging:
   path: logs/
   file:
     max-size: 1GB
+
+
+

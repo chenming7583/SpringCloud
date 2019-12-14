@@ -16,3 +16,9 @@ spring:
     port: ${RABBIT_MQ_PORT:5672}
     username: guest
     password: guest
+
+#禁用rabbitmq检查
+management:
+  health:
+    rabbit:
+      enabled: false
