@@ -87,6 +87,13 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!--项目名,需要和Harbor中的项目名称保持一致 -->
+        <docker.image.prefix>archives</docker.image.prefix>
+        <!-- docker私服地址,Harbor配置完默认地址就是服务器IP地址,默认不带端口号 -->
+        <docker.registry>registry.test.com</docker.registry>
+        <!-- docker插件版本 -->
+        <docker.maven.plugin.version>1.0.0</docker.maven.plugin.version>
     </properties>
 
     <dependencies>
@@ -166,12 +173,12 @@
                 </executions>
             </plugin>
             <!--docker镜像build插件-->
-            <plugin>
+            <!--<plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>${docker.maven.plugin.version}</version>
                 <configuration>
-                    <!-- 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 -->
+                    &lt;!&ndash; 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 &ndash;&gt;
                     <imageName>cike/${project.artifactId}</imageName>
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
                     <rm>true</rm>
@@ -183,7 +190,7 @@
                         </resource>
                     </resources>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 </project>
