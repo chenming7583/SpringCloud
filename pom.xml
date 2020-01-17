@@ -87,6 +87,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <spring.boot.version>Finchley.RELEASE</spring.boot.version>
 
         <!--项目名,需要和Harbor中的项目名称保持一致 -->
         <docker.image.prefix>archives</docker.image.prefix>

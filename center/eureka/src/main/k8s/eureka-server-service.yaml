@@ -9,12 +9,14 @@ spec:
   type: NodePort
   ports:
   - port: 8761
+    targetPort: 8761
     nodePort: 30091 #service对外开放端口
+    name: eureka-server
   selector:
     app: eureka-server
 ---
 apiVersion: apps/v1
-kind: Deployment #对象类型
+kind: StatefulSet
 metadata:
   name: eureka-server #名称
   labels:

@@ -7,9 +7,9 @@ FROM registry.test.com/common/jdk1.8.0_111
 ADD /eureka-server-0.0.1-SNAPSHOT.jar /
 ADD ./run.sh /
 RUN chmod u+x /*.sh
-ENV JAVA_OPTS=""
+ENV JAVA_OPTS="-Duser.timezone=Asia/Shanghai"
 ENV SERVICE_HOST="eureka-server"
 ENV CONFIG_HOST="eureka-service"
 ENV CONFIG_PROFILE="default"
-ENV SERVER_PORT="8080"
+ENV SERVER_PORT="8761"
 ENTRYPOINT [ "bash", "-c", "/run.sh" ]

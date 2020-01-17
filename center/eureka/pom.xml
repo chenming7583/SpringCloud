@@ -28,6 +28,28 @@
     <build>
         <plugins>
             <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <mainClass>com.springboot.cloud.EurekaApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <configuration>
@@ -36,6 +58,7 @@
                     <registryUrl>registry.test.com</registryUrl>	<!--镜像生成后需要推送到某个仓库地址的配置-->
                     <pushImage>true</pushImage>		<!--是否向配置的仓库推送镜像-->
                     <imageName>registry.test.com/${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>	<!--生成的镜像名称-->
+                    <dockerHost>http://registry.test.com:2375</dockerHost>
                     <!--TAG,这里用工程版本号-->
                     <!--<imageTags>
                         <imageTag>${project.version}</imageTag>
